@@ -10,28 +10,34 @@
             height: 100vh;
             margin: 0;
             background-color: #000;
+            position: relative; /* Para posicionar el texto encima de la imagen */
         }
-        mensaje {
+        #mensaje {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 20px; /* Ajusta la posición vertical del texto */
+            left: 50%; /* Centra horizontalmente */
+            transform: translateX(-50%); /* Centra exactamente */
             text-align: center;
             color: yellow;
             font-size: 24px;
-            width: 100%;
+            width: 80%; /* Ajusta el ancho del texto */
+            z-index: 1; /* Asegura que el texto esté encima de la imagen */
+        }
+        #imagen {
+            z-index: 0; /* Asegura que la imagen esté detrás del texto */
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div id="mensaje">Si no recuerdas que has olvidado toca la recordadora.</div>
-    <img id="imagen" src="https://raw.githubusercontent.com/acano89/recordadora/main/recordadora2.gif" style="cursor: pointer;">
-    <audio id="audio" src="Text_to_Speech.wav" autoplay></audio>
+    <div id="mensaje">Si no recuerdas que has olvidado, toca la recordadora.</div>
+    <img id="imagen" src="https://raw.githubusercontent.com/acano89/recordadora/main/recordadora2.gif">
+    <audio id="audio" src="https://raw.githubusercontent.com/acano89/recordadora/main/Text%20to%20Speech.wav" autoplay></audio>
 
     <script>
         // Obtener elementos del DOM
         const audio = document.getElementById('audio');
         const imagen = document.getElementById('imagen');
-        const mensaje = document.getElementById('mensaje');
 
         // Función para reproducir o pausar el audio
         function toggleAudio() {
@@ -48,3 +54,4 @@
     </script>
 </body>
 </html>
+
