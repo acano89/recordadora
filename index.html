@@ -11,10 +11,40 @@
             margin: 0;
             background-color: #000;
         }
+        #mensaje {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+            color: yellow;
+            font-size: 24px;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
-    <img src="https://raw.githubusercontent.com/acano89/recordadora/main/recordadora2.gif">
+    <div id="mensaje">Si no recuerdas que has olvidado toca la recordadora.</div>
+    <img id="imagen" src="https://raw.githubusercontent.com/acano89/recordadora/main/recordadora2.gif" style="cursor: pointer;">
     <audio id="audio" src="https://raw.githubusercontent.com/acano89/recordadora/main/Text%20to%20Speech.wav" autoplay></audio>
+
+    <script>
+        // Obtener elementos del DOM
+        const audio = document.getElementById('audio');
+        const imagen = document.getElementById('imagen');
+        const mensaje = document.getElementById('mensaje');
+
+        // Función para reproducir o pausar el audio
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+                audio.currentTime = 0; // Reiniciar el audio al principio
+            }
+        }
+
+        // Event listener para hacer clic en la imagen
+        imagen.addEventListener('click', toggleAudio);
+    </script>
 </body>
 </html>
